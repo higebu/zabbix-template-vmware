@@ -1,0 +1,2 @@
+zabbix-vmware-template
+======================
