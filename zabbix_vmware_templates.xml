@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-11-18T08:09:31Z</date>
+    <date>2013-11-19T03:55:46Z</date>
     <groups>
         <group>
             <name>Clusters</name>
@@ -260,7 +260,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>grpsum[&quot;Hypervisors&quot;,&quot;calc.vmware.hv.hw.cpu.freq.total&quot;,last,0]</key>
-                    <delay>3600</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -320,6 +320,48 @@
                     <formula>1</formula>
                     <delay_flex/>
                     <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>Total CPU usage (%)</name>
+                    <type>15</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>calc.vmware.vcenter.cpu.usage.percent</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>100 * last(&quot;grpsum[\&quot;Hypervisors\&quot;,\&quot;calc.vmware.hv.cpu.usage\&quot;,last,0]&quot;) / last(&quot;grpsum[\&quot;Hypervisors\&quot;,\&quot;calc.vmware.hv.hw.cpu.freq.total\&quot;,last,0]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -488,6 +530,48 @@
                     <formula>1</formula>
                     <delay_flex/>
                     <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>Total used memory (%)</name>
+                    <type>15</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>calc.vmware.vcenter.memory.usage.percent</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>100 * last(&quot;grpsum[\&quot;Hypervisors\&quot;,\&quot;calc.vmware.hv.memory.used\&quot;,last,0]&quot;) / last(&quot;grpsum[\&quot;Hypervisors\&quot;,\&quot;calc.vmware.hv.hw.memory\&quot;,last,0]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -719,7 +803,99 @@
             </discovery_rules>
             <macros/>
             <templates/>
-            <screens/>
+            <screens>
+                <screen>
+                    <name>Total usage</name>
+                    <hsize>2</hsize>
+                    <vsize>2</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>CPU overcommit ratio</name>
+                                <host>Template Virt VMware</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Total CPU usage (%)</name>
+                                <host>Template Virt VMware</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Memory overcommit ratio</name>
+                                <host>Template Virt VMware</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Total used memory (%)</name>
+                                <host>Template Virt VMware</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+            </screens>
         </template>
         <template>
             <template>Template Virt VMware Cluster</template>
@@ -918,7 +1094,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>grpsum[&quot;{HOST.NAME}&quot;,&quot;calc.vmware.hv.hw.cpu.freq.total&quot;,last,0]</key>
-                    <delay>3600</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -978,6 +1154,48 @@
                     <formula>1</formula>
                     <delay_flex/>
                     <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>Total CPU usage (percentage)</name>
+                    <type>15</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>calc.vmware.cluster.cpu.usage.percent</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>100 * last(&quot;grpsum[\&quot;{HOST.NAME}\&quot;,\&quot;calc.vmware.hv.cpu.usage\&quot;,last,0]&quot;) / last(&quot;grpsum[\&quot;{HOST.NAME}\&quot;,\&quot;calc.vmware.hv.hw.cpu.freq.total\&quot;,last,0]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -1163,11 +1381,145 @@
                     </applications>
                     <valuemap/>
                 </item>
+                <item>
+                    <name>Total used memory (percentage)</name>
+                    <type>15</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>calc.vmware.cluster.memory.usage.percent</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>100 * last(&quot;grpsum[\&quot;{HOST.NAME}\&quot;,\&quot;calc.vmware.hv.memory.used\&quot;,last,0]&quot;) / last(&quot;grpsum[\&quot;{HOST.NAME}\&quot;,\&quot;calc.vmware.hv.hw.memory\&quot;,last,0]&quot;)</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
             </items>
             <discovery_rules/>
             <macros/>
             <templates/>
-            <screens/>
+            <screens>
+                <screen>
+                    <name>Total usage of Cluster</name>
+                    <hsize>2</hsize>
+                    <vsize>2</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>CPU overcommit ratio</name>
+                                <host>Template Virt VMware Cluster</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Memory overcommit ratio</name>
+                                <host>Template Virt VMware Cluster</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Total CPU usage (%)</name>
+                                <host>Template Virt VMware Cluster</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Total used memory (%)</name>
+                                <host>Template Virt VMware Cluster</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+            </screens>
         </template>
         <template>
             <template>Template Virt VMware Guest</template>
@@ -1253,7 +1605,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.cluster.name[{$URL},{HOST.HOST}]</key>
-                    <delay>3600</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1295,7 +1647,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.storage.committed[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1337,7 +1689,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.memory.size.compressed[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1379,7 +1731,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.cpu.usage[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1421,7 +1773,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.memory.size.usage.guest[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1448,6 +1800,48 @@
                     <privatekey/>
                     <port/>
                     <description>The amount of guest physical memory that is being used by the VM.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>Guest memory usage (percentage)</name>
+                    <type>15</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vmware.vm.memory.size.usage.guest.percent</key>
+                    <delay>300</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>100 * last(&quot;vmware.vm.memory.size.usage.guest[{$URL},{HOST.HOST}]&quot;) / last(&quot;vmware.vm.memory.size[{$URL},{HOST.HOST}]&quot;)</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -1505,7 +1899,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.hv.name[{$URL},{HOST.HOST}]</key>
-                    <delay>3600</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1532,7 +1926,7 @@
                     <privatekey/>
                     <port/>
                     <description>Hypervisor name of the guest VM.</description>
-                    <inventory_link>0</inventory_link>
+                    <inventory_link>14</inventory_link>
                     <applications>
                         <application>
                             <name>General</name>
@@ -1590,8 +1984,8 @@
                     <snmp_oid/>
                     <key>calc.vmware.vm.memory.size</key>
                     <delay>300</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>1</history>
+                    <trends>0</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1631,7 +2025,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.cpu.num[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1673,9 +2067,9 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>calc.vmware.vm.cpu.num</key>
-                    <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <delay>300</delay>
+                    <history>1</history>
+                    <trends>0</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1715,7 +2109,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.powerstate[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1759,7 +2153,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.memory.size.private[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1801,7 +2195,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.memory.size.shared[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1843,7 +2237,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.memory.size.swapped[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1885,7 +2279,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.storage.uncommitted[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1927,7 +2321,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.storage.unshared[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1969,7 +2363,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vmware.vm.uptime[{$URL},{HOST.HOST}]</key>
-                    <delay>60</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -2032,7 +2426,7 @@
                     <privatekey/>
                     <port/>
                     <filter>:</filter>
-                    <lifetime>30</lifetime>
+                    <lifetime>0</lifetime>
                     <description>Discovery of all disk devices.</description>
                     <item_prototypes>
                         <item_prototype>
@@ -2042,7 +2436,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.dev.read[{$URL},{HOST.HOST},{#DISKNAME},bps]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2084,7 +2478,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.dev.write[{$URL},{HOST.HOST},{#DISKNAME},bps]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2126,7 +2520,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.dev.read[{$URL},{HOST.HOST},{#DISKNAME},ops]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2168,7 +2562,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.dev.write[{$URL},{HOST.HOST},{#DISKNAME},ops]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2205,7 +2599,96 @@
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes/>
-                    <graph_prototypes/>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Average number of kilobytes read/write from the disk {#DISKNAME}</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>1</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C80000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Virt VMware Guest</host>
+                                        <key>vmware.vm.vfs.dev.read[{$URL},{HOST.HOST},{#DISKNAME},bps]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00C800</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Virt VMware Guest</host>
+                                        <key>vmware.vm.vfs.dev.write[{$URL},{HOST.HOST},{#DISKNAME},bps]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Average number of reads/writes from the disk {#DISKNAME}</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>1</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C80000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Virt VMware Guest</host>
+                                        <key>vmware.vm.vfs.dev.read[{$URL},{HOST.HOST},{#DISKNAME},ops]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00C800</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Virt VMware Guest</host>
+                                        <key>vmware.vm.vfs.dev.write[{$URL},{HOST.HOST},{#DISKNAME},ops]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
                     <host_prototypes/>
                 </discovery_rule>
                 <discovery_rule>
@@ -2234,7 +2717,7 @@
                     <privatekey/>
                     <port/>
                     <filter>:</filter>
-                    <lifetime>30</lifetime>
+                    <lifetime>0</lifetime>
                     <description>Discovery of all guest file systems.</description>
                     <item_prototypes>
                         <item_prototype>
@@ -2244,7 +2727,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.fs.size[{$URL},{HOST.HOST},{#FSNAME},free]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2286,7 +2769,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.fs.size[{$URL},{HOST.HOST},{#FSNAME},pfree]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2328,7 +2811,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.fs.size[{$URL},{HOST.HOST},{#FSNAME},total]</key>
-                            <delay>3600</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2370,7 +2853,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.vfs.fs.size[{$URL},{HOST.HOST},{#FSNAME},used]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2405,9 +2888,84 @@
                             </applications>
                             <valuemap/>
                         </item_prototype>
+                        <item_prototype>
+                            <name>Used disk space on {#FSNAME} (percentage)</name>
+                            <type>3</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>vmware.vm.vfs.fs.size[{$URL},{HOST.HOST},{#FSNAME},pused]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username>{$USERNAME}</username>
+                            <password>{$PASSWORD}</password>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Filesystems</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes/>
-                    <graph_prototypes/>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Used disk space on {#FSNAME} (percentage)</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>1</ymin_type_1>
+                            <ymax_type_1>1</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C80000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Virt VMware Guest</host>
+                                        <key>vmware.vm.vfs.fs.size[{$URL},{HOST.HOST},{#FSNAME},pused]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
                     <host_prototypes/>
                 </discovery_rule>
                 <discovery_rule>
@@ -2436,7 +2994,7 @@
                     <privatekey/>
                     <port/>
                     <filter>:</filter>
-                    <lifetime>30</lifetime>
+                    <lifetime>0</lifetime>
                     <description>Discovery of all network devices.</description>
                     <item_prototypes>
                         <item_prototype>
@@ -2446,7 +3004,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.net.if.in[{$URL},{HOST.HOST},{#IFNAME},bps]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2488,7 +3046,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.net.if.out[{$URL},{HOST.HOST},{#IFNAME},bps]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2530,7 +3088,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.net.if.in[{$URL},{HOST.HOST},{#IFNAME},pps]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2572,7 +3130,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vmware.vm.net.if.out[{$URL},{HOST.HOST},{#IFNAME},pps]</key>
-                            <delay>60</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -2867,8 +3425,8 @@
                     <snmp_oid/>
                     <key>calc.vmware.hv.hw.cpu.num</key>
                     <delay>3600</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>1</history>
+                    <trends>0</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -3121,7 +3679,7 @@
                     <valuemap/>
                 </item>
                 <item>
-                    <name>CPU usage (%)</name>
+                    <name>CPU usage (percentage)</name>
                     <type>15</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
@@ -3170,8 +3728,8 @@
                     <snmp_oid/>
                     <key>calc.vmware.hv.cpu.usage</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>1</history>
+                    <trends>0</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -3506,8 +4064,8 @@
                     <snmp_oid/>
                     <key>calc.vmware.hv.vcpu.num</key>
                     <delay>300</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>1</history>
+                    <trends>0</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -3682,8 +4240,8 @@
                     <snmp_oid/>
                     <key>calc.vmware.hv.hw.memory</key>
                     <delay>3600</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>1</history>
+                    <trends>0</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -3804,7 +4362,7 @@
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Used memory (%)</name>
+                    <name>Used memory (percentage)</name>
                     <type>15</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
@@ -3853,8 +4411,8 @@
                     <snmp_oid/>
                     <key>calc.vmware.hv.memory.used</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>1</history>
+                    <trends>0</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -4088,18 +4646,197 @@
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes/>
-                    <graph_prototypes/>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Average latency of the datastore {#DATASTORE}</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>1</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C80000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Virt VMware Hypervisor</host>
+                                        <key>vmware.hv.datastore.read[{$URL},{HOST.HOST},{#DATASTORE},latency]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00C800</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Virt VMware Hypervisor</host>
+                                        <key>vmware.hv.datastore.write[{$URL},{HOST.HOST},{#DATASTORE},latency]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
                     <host_prototypes/>
                 </discovery_rule>
             </discovery_rules>
             <macros/>
             <templates/>
-            <screens/>
+            <screens>
+                <screen>
+                    <name>Total usage of Hypervisor</name>
+                    <hsize>2</hsize>
+                    <vsize>3</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>CPU overcommit ratio</name>
+                                <host>Template Virt VMware Hypervisor</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>CPU usage (%)</name>
+                                <host>Template Virt VMware Hypervisor</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Memory overcommit ratio</name>
+                                <host>Template Virt VMware Hypervisor</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Used memory (%)</name>
+                                <host>Template Virt VMware Hypervisor</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>2</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Number of vCPUs</name>
+                                <host>Template Virt VMware Hypervisor</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>2</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Number of guest VMs</name>
+                                <host>Template Virt VMware Hypervisor</host>
+                            </resource>
+                            <application/>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+            </screens>
         </template>
     </templates>
     <graphs>
         <graph>
-            <name>CPU cores for calculation</name>
+            <name>CPU overcommit ratio</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
@@ -4195,70 +4932,6 @@
             </graph_items>
         </graph>
         <graph>
-            <name>CPU overcommit ratio</name>
-            <width>900</width>
-            <height>200</height>
-            <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
-            <show_legend>1</show_legend>
-            <show_3d>0</show_3d>
-            <percent_left>0.0000</percent_left>
-            <percent_right>0.0000</percent_right>
-            <ymin_type_1>1</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
-            <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
-            <graph_items>
-                <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C80000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template Virt VMware Hypervisor</host>
-                        <key>calc.vmware.hv.cpu.overcommit</key>
-                    </item>
-                </graph_item>
-            </graph_items>
-        </graph>
-        <graph>
-            <name>CPU usage</name>
-            <width>900</width>
-            <height>200</height>
-            <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
-            <show_legend>1</show_legend>
-            <show_3d>0</show_3d>
-            <percent_left>0.0000</percent_left>
-            <percent_right>0.0000</percent_right>
-            <ymin_type_1>1</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
-            <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
-            <graph_items>
-                <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C80000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template Virt VMware Guest</host>
-                        <key>vmware.vm.cpu.usage[{$URL},{HOST.HOST}]</key>
-                    </item>
-                </graph_item>
-            </graph_items>
-        </graph>
-        <graph>
             <name>CPU usage (%)</name>
             <width>900</width>
             <height>200</height>
@@ -4286,6 +4959,38 @@
                     <item>
                         <host>Template Virt VMware Hypervisor</host>
                         <key>calc.vmware.hv.hw.cpu.usage.percent</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Guest memory usage (percentage)</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Virt VMware Guest</host>
+                        <key>vmware.vm.memory.size.usage.guest.percent</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -4382,6 +5087,198 @@
                     <item>
                         <host>Template Virt VMware Hypervisor</host>
                         <key>calc.vmware.hv.memory.overcommit</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Number of guest VMs</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Virt VMware Hypervisor</host>
+                        <key>vmware.hv.vm.num[{$URL},{HOST.HOST}]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Number of vCPUs</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Virt VMware Hypervisor</host>
+                        <key>grpsum[&quot;{HOST.NAME}&quot;,&quot;vmware.vm.cpu.num[{$URL},calc.vmware.vm.cpu.num]&quot;,last,0]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Total CPU usage (%)</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Virt VMware Cluster</host>
+                        <key>calc.vmware.cluster.cpu.usage.percent</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Total CPU usage (%)</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Virt VMware</host>
+                        <key>calc.vmware.vcenter.cpu.usage.percent</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Total used memory (%)</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Virt VMware</host>
+                        <key>calc.vmware.vcenter.memory.usage.percent</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Total used memory (%)</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Virt VMware Cluster</host>
+                        <key>calc.vmware.cluster.memory.usage.percent</key>
                     </item>
                 </graph_item>
             </graph_items>
