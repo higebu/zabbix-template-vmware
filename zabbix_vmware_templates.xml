@@ -4020,7 +4020,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>grpsum[&quot;{HOST.NAME}&quot;,&quot;vmware.vm.cpu.num[{$URL},calc.vmware.vm.cpu.num]&quot;,last,0]</key>
+                    <key>grpsum[&quot;{HOST.NAME}&quot;,&quot;calc.vmware.vm.cpu.num&quot;,last,0]</key>
                     <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
@@ -5150,7 +5150,7 @@
                     <type>0</type>
                     <item>
                         <host>Template Virt VMware Hypervisor</host>
-                        <key>grpsum[&quot;{HOST.NAME}&quot;,&quot;vmware.vm.cpu.num[{$URL},calc.vmware.vm.cpu.num]&quot;,last,0]</key>
+                        <key>grpsum[&quot;{HOST.NAME}&quot;,&quot;calc.vmware.vm.cpu.num&quot;,last,0]</key>
                     </item>
                 </graph_item>
             </graph_items>
